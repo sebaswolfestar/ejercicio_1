@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #3d3d3d;
+            font-family: Arial, sans-serif;
+        }
+        #clock {
+            width: 60%;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        #clock h1 {
+            font-size: 4em;
+            margin: 0;
+            line-height: 1.1;
+        }
+        #clock span {
+            font-size: 1.5em;
+            color: #666;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">
+        <h1 id="timer"></h1>
+        <span id="timeParts"></span>
+    </div>
+
+    <script>
+        const timer = document.getElementById("timer");
+        const timeParts = document.getElementById("timeParts");
+
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours().toString().padStart(2, "0");
+            const minutes = now.getMinutes().toString().padStart(2, "0");
+            const seconds = now.getSeconds().toString().padStart(2, "0");
+
+            timer.textContent = `${hours}:${minutes}:${seconds}`;
+            timeParts.textContent = `Hours: ${hours} Minutes: ${minutes} Seconds: ${seconds}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
